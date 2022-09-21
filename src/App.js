@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
 
 function App() {
+  const [text, setText] = useState("25%OFF");
+  const [status, setStatus] = useState("Copy");
+
+  const textChange = (e) => {
+    setText(e.target.value);
+    setStatus("Copy");
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <h1>Get 25% with this coupon</h1>
+      <form>
+        {" "}
+        <input type="text" value={text} onChange={(e) => textChange(e)}></input>
+        <button
+          className="bttn"
+          onClick={(e) => {
+            navigator.clipboard.writeText(text);
+            e.preventDefault();
+            setStatus("Copied");
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          {status}
+        </button>
+      </form>
     </div>
   );
 }
