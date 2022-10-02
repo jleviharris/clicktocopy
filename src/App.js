@@ -12,21 +12,27 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Get 25% with this coupon</h1>
-      <form>
-        {" "}
-        <input type="text" value={text} onChange={(e) => textChange(e)}></input>
-        <button
-          className="bttn"
-          onClick={(e) => {
-            navigator.clipboard.writeText(text);
-            e.preventDefault();
-            setStatus("Copied");
-          }}
-        >
-          {status}
-        </button>
-      </form>
+      <div className="container">
+        <h1>Get 25% with this coupon</h1>
+        <form>
+          {" "}
+          <input
+            type="text"
+            value={text}
+            onChange={(e) => textChange(e)}
+          ></input>
+          <button
+            className="bttn"
+            onClick={(e) => {
+              navigator.clipboard.writeText(text);
+              e.preventDefault();
+              setStatus("Copied");
+            }}
+          >
+            {status}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
